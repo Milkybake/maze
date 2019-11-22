@@ -10,7 +10,7 @@ import time
 from collections import defaultdict
 
 from maze import Maze, Game, game_repeater
-from goodies import RandomGoody
+from goodies import SEALGoody6 
 from baddies import RandomBaddy
 
 
@@ -28,8 +28,8 @@ EXAMPLE_MAZE = Maze(10, 10, "0001010000"
 def text_example():
     ''' Prints the state of the game to stdout after each round of turns '''
 
-    goody0 = RandomGoody()
-    goody1 = RandomGoody()
+    goody0 = SEALGoody6()
+    goody1 = SEALGoody6()
     baddy = RandomBaddy()
 
     game = Game(EXAMPLE_MAZE * (2, 2), goody0, goody1, baddy)
@@ -44,7 +44,7 @@ def stats_example(total_games):
     ''' Plays many games, printing cumulative and final stats '''
 
     results = defaultdict(int)
-    for game_number, game in enumerate(game_repeater(EXAMPLE_MAZE, RandomGoody, RandomGoody, RandomBaddy)):
+    for game_number, game in enumerate(game_repeater(EXAMPLE_MAZE, SEALGoody6, SEALGoody6, RandomBaddy)):
         if game_number == total_games:
             break
         result, _rounds = game.play()
